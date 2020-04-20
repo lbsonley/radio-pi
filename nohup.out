@@ -1,0 +1,44 @@
+
+> pi.Tv@0.0.1 start /home/pi/projects/piTv
+> node server.js
+
+Sat, 11 Apr 2020 14:28:16 GMT body-parser deprecated bodyParser: use individual json/urlencoded middlewares at server.js:24:9
+Sat, 11 Apr 2020 14:28:16 GMT body-parser deprecated undefined extended: provide extended option at node_modules/body-parser/index.js:105:29
+Express server listening on port 8080
+remote connected
+
+> pi.Tv@0.0.1 start /home/pi/projects/piTv
+> node server.js
+
+Sat, 11 Apr 2020 14:28:31 GMT body-parser deprecated bodyParser: use individual json/urlencoded middlewares at server.js:24:9
+Sat, 11 Apr 2020 14:28:31 GMT body-parser deprecated undefined extended: provide extended option at node_modules/body-parser/index.js:105:29
+Express server listening on port 8080
+remote connected
+remote connected
+GET /remote 200 340 - 39.985 ms
+disconnected
+GET /main.js 304 - - 5.164 ms
+remote connected
+GET /remote 200 340 - 6.133 ms
+disconnected
+GET /main.js 304 - - 3.655 ms
+remote connected
+GET /remote 200 340 - 9.868 ms
+disconnected
+GET /main.js 304 - - 3.517 ms
+remote connected
+disconnected
+remote connected
+GET /remote 200 340 - 5.713 ms
+GET /main.js 304 - - 3.273 ms
+remote connected
+GET /remote 200 340 - 5.404 ms
+disconnected
+GET /main.js 304 - - 3.269 ms
+remote connected
+play fkj_mix.mp4
+args for omxplayer: [ '/home/pi/Music/fkj_mix.mp4', '-o', 'local', '--blank', '--no-osd' ]
+stop
+disconnected
+disconnected
+remote connected

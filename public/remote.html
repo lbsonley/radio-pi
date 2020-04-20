@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+  <head>
+    <style>
+      button {
+        height: 100px;
+        width: 96px;
+        background: rgba(172, 168, 112, 0.4);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div>
+        <!-- label for="video-id">Youtube Video ID:</label>
+        <input id="video-id" type="text" /-->
+        <div class="controls">
+          <div class="controls__playback">
+            <button id="play">Play/Pause</button>
+            <button id="stop">Stop</button>
+          </div>
+          <div class="controls__volume">
+            <button id="vol-down">Volume -</button>
+            <button id="vol-up">Volume +</button>
+          </div>
+        </div>
+      </div>
+      
+      <div id="status">
+        
+      </div>
+      
+    </main>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      const videoId = document.getElementById('video-id');
+      const playButton = document.getElementById('play');
+      const stopButton = document.getElementById('stop');
+      const volUpButton = document.getElementById('vol-up');
+      const volDownButton = document.getElementById('vol-down');
+      
+      const socket = io.connect('http://192.168.0.38:8080');
+      
+      const statusWindow = document.getElementById('status');
+      
+      function addStatusMessage(msg) {
+        const pNode = document.createElement('p');
+        const date = new Date();
+        const time = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+        const text = document.createTextNode(`${time}: ${msg}`);
+        pNode.appendChild(text);
+        statusWindow.prepend(pNode);
+      }
+
+      playButton.addEventListener('click', function(e) {
+        console.log('play');
+        socket.emit('control', { action: 'play' });
+      });
+      
+      stopButton.addEventListener('click', function(e) {
+        console.log('stop');
+        socket.emit('control', { action: 'stop' });
+      });
+      
+      volUpButton.addEventListener('click', function(e) {
+        console.log('volume up');
+        socket.emit('control', { action: 'volume', dir: 'up' });
+      });
+      
+      volDownButton.addEventListener('click', function(e) {
+        console.log('volume down');
+        socket.emit('control', { action: 'volume', dir: 'down' });
+      });
+      
+      
+      socket.on('connect', function(data) {
+        socket.emit('remote');
+      });
+      
+      socket.on('synced', function() {
+        console.log('synced');
+        addStatusMessage('Connected to Pi Media Server');
+      });
+      
+      socket.on('statusMessage', function(data) {
+        addStatusMessage(data.msg);
+      });
+      
+      socket.on('loading', function(chunkSize) {
+        console.log('loaded', chunkSize, 'bytes');
+      });
+      
+      socket.on('loaded', function() {
+        console.log('done loading');
+      });
+    </script>
+  </body>
+</html>
