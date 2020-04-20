@@ -19,12 +19,14 @@ const MediaPanel = styled.div`
   padding-bottom: 60px;
 `;
 
+// transient props:
+// https://github.com/styled-components/styled-components/releases/tag/v5.1.0
 const PaddedPaper = styled(Paper)`
-  padding-top: ${(props) => (props.big ? "18px" : "12px")};
+  padding-top: ${(props) => (props.$big ? "18px" : "12px")};
   background-color: transparent;
 `;
 
-const MediaItem = ({ name }) => (
+const MediaItem = ({ handleSelection, path, name }) => (
   <Grid
     container
     direction="row"
@@ -37,7 +39,7 @@ const MediaItem = ({ name }) => (
     </Grid>
     <Grid item xs>
       <ButtonGroup color="primary">
-        <Button>
+        <Button onClick={() => handleSelection({ path, name })}>
           <PlayArrowIcon />
         </Button>
         <Button>
@@ -48,40 +50,44 @@ const MediaItem = ({ name }) => (
   </Grid>
 );
 
-const MediaLibrary = ({ library, handleSelection }) => {
-  const handleClick = (path, name) => {
-    console.log(path, name);
-    handleSelection({ path, name });
-  };
+MediaItem.propTypes = {
+  handleSelection: PropTypes.func.isRequired,
+  path: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired
+};
 
-  const renderTree = (nodes) => (
-    <PaddedPaper elevation="0" big={!!nodes.children}>
+const MediaLibrary = ({ library, handleSelection }) => {
+  const renderTree = (node) => (
+    <PaddedPaper
+      key={node.name}
+      elevation={0}
+      $big={!!node.children}
+    >
       <TreeItem
-        key={nodes.name}
-        nodeId={nodes.name}
+        key={node.name}
+        nodeId={node.name}
         label={
-          nodes.children ? (
+          node.children ? (
             <span>
-              {nodes.name
+              {node.name
                 .replace(/[_]/g, " ")
                 .replace(/[-]/g, " - ")
                 .replace(/(.mp4)/, "")}
             </span>
           ) : (
             <MediaItem
-              name={nodes.name
+              handleSelection={handleSelection}
+              path={node.path}
+              name={node.name
                 .replace(/[_]/g, " ")
                 .replace(/[-]/g, " - ")
                 .replace(/(.mp4)/, "")}
             />
           )
         }
-        onClick={
-          nodes.children ? null : () => handleClick(nodes.path, nodes.name)
-        }
       >
-        {Array.isArray(nodes.children)
-          ? nodes.children.map((node) => renderTree(node))
+        {Array.isArray(node.children)
+          ? node.children.map((child) => renderTree(child))
           : null}
       </TreeItem>
     </PaddedPaper>

@@ -102,6 +102,7 @@ const Player = ({ emit, library, nowPlaying }) => {
         <FlexWrapper>
           {Object.keys(buttons).map((key) => (
             <Control
+              key={key}
               title={buttons[key].title}
               icon={buttons[key].icon}
               size={buttons[key].size}
@@ -113,6 +114,7 @@ const Player = ({ emit, library, nowPlaying }) => {
         <FlexWrapper>
           {Object.keys(volume).map((key) => (
             <Control
+              key={key}
               title={volume[key].title}
               icon={volume[key].icon}
               size={volume[key].size}
@@ -147,7 +149,7 @@ Player.propTypes = {
   emit: PropTypes.func.isRequired,
   library: libraryPropTypes.library.isRequired,
   nowPlaying: PropTypes.shape({
-    name: PropTypes.string.isRequired,
+    name: PropTypes.string,
   }).isRequired,
 };
 
