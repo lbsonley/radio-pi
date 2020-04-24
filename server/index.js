@@ -15,6 +15,11 @@ const directoryTree = require('directory-tree');
 let player;
 let remote;
 let currentTrack;
+let music;
+let queue = {
+  items: [],
+  activeIndex: 0
+};
 
 // Config
 
@@ -29,142 +34,191 @@ app.use(cors());
 
 // Routes
 
-app.get('/', function(req, res) {
-	res.sendFile(path.join(__dirname, '..', '/public/remote.html'));
-});
-
-app.get('/remote', function(req, res) {
-	res.sendFile(path.join(__dirname, '..',  '/dist/index.html'));
+app.get('*', function(req, res) {
+  res.sendFile(path.join(__dirname, '..', '/dist/index.html'));
 });
 
 server.listen(app.get('port'), function() {
-	console.log(`Express server listening on port ${app.get('port')}`);
+  console.log(`Express server listening on port ${app.get('port')}`);
 });
 
 // Socket
+io.on('connection', async function(socket) {
+  console.log('remote connected');
 
-io.on('connection', function(socket) {
-	console.log('remote connected');
-	
-	getMusic('/home/pi/Music')
-		.then(nodes => {console.log(JSON.stringify(nodes, null, 2)); return nodes})
-		.then(nodes => io.emit('library', { nodes }))
-		.catch(err => console.log(err));
-	
-	if (player && player.running) {
-		console.log('playing', currentTrack);
-		io.emit('nowPlaying', { name: currentTrack });
-	} else {
-		io.emit('nowPlaying', { name: '' });
-	}
-	
-	if (player) {
-		
-	}
+  socket.on('disconnect', function() {
+    console.log('disconnected');
+  });
+  
+  // handle player creation
+  player = player || omx();
 
-	socket.on('disconnect', function() {
-		console.log('disconnected');
-	});
-	
-	socket.on('remote', function(data) {
-		console.log('remote ready');
-		io.emit('synced');
-	});
-	
-	socket.on('control', function(data) {
-		console.log('control', data.action, JSON.stringify(data, null, 2));
-		switch (data.action) {
-			case 'play':
-				handlePlay(data.path, data.name);
-				break;
-			case 'download':
-				// handleDownload(data.id);
-				break;
-			case 'stop':
-				handleStop();
-				break;
-			case 'pause':
-				handlePause();
-				break;
-			case 'volume':
-				handleVol(data.direction);
-				break;
-			case 'forward30':
-				player && player.running && player.fwd30();
-				break;
-			case 'forward600':
-				player && player.running && player.fwd600();
-				break;
-			case 'back30':
-				player && player.running && player.back30();
-				break;
-			case 'back600':
-				player && player.running && player.back600();
-				break;
-			default:
-				return;
-		}
-	});
+  // read music from filesystem and send it to app
+  try {
+    music = music || await getMusic('/home/pi/Music');
+    // console.log(JSON.stringify(music, null, 2));
+    io.emit('library', music);
+    io.emit('queue', queue);
+  } catch(err) {
+    console.log(err);
+  }
 
-	function handlePlaybackEnd() {
-		console.log('player closed');
-		io.emit('player closed');
-	}
-	
-	function handlePlay(filePath, name) {
-		if (player && player.running && currentTrack === filePath) {
-			handlePause();
-		}
-		else if(player && player.running && currentTrack !== filePath)  {
-			player.newSource(filePath)
-			io.emit('nowPlaying', { name });
-		} else {
-			player = omx(filePath);
-			player.on('close', handlePlaybackEnd);
-			io.emit('nowPlaying', { name });
-		}
-		
-		currentTrack = filePath;
-	}
-	
-	function handleStop() {
-		if (player && player.running) player.quit();
-		io.emit('statusMessage', { msg: 'Stopped Playback' });
-	}
-	
-	function handlePause() {
-		if (player && player.running) player.pause();
-		io.emit('statusMessage', { msg: 'Paused Playback' });
-	}
-	
-	function handleVol(direction) {
-		if (player && player.running) {
-			switch (direction) {
-				case 'down':
-					player.volDown();
-					io.emit('statusMessage', { msg: 'Decreased Volume' });
-					break;
-				case 'up':
-					player.volUp();
-					io.emit('statusMessage', { msg: 'Increased Volume' });
-					break;
-				default:
-					return;
-			}
-		}
-	}
-	
-	
-	function getMusic(dir) {
-		return new Promise((resolve, reject) => {
-			try {
-				const tree = directoryTree(dir);
-				resolve(tree);
-			} catch(err){
-				reject(err);
-			};
-		});
-	}
-	
+  socket.on('updateQueue', (payload) => {
+    const { type, path, name } = payload;
+    const { items, activeIndex } = queue
+
+    switch(type) {
+      case 'add':
+        queue.items.push({ path, name });
+        io.emit('message', {
+          message: `Added to end of queue: ${name}`,
+          key: path,
+          severity: 'success'
+        });
+        break;
+      case 'playNext':
+        items.splice(activeIndex + 1, 0, { path, name });
+        io.emit('message', {
+          message: `Added next in queue: ${name}`,
+          key: path,
+          severity: 'success'
+        });
+        break;
+      case 'clear':
+        queue = { items: [], activeIndex: 0 };
+        io.emit('message', {
+          message: 'Cleared Queue',
+          key: 'clear',
+          severity: 'success'
+        });
+        break;
+      default:
+        console.log(type, path, name);
+        return;
+    };
+    io.emit('queue', queue);
+  });
+
+  socket.on('control', function(payload) {
+    console.log('control', payload.type, JSON.stringify(payload, null, 2));
+    switch (payload.type) {
+      case 'play':
+        handlePlay();
+        break;
+      case 'stop':
+        handleStop();
+        break;
+      case 'volume':
+        handleVol(payload.direction);
+        break;
+      case 'forward30':
+        player.running && player.fwd30();
+        break;
+      case 'backward30':
+        player.running && player.back30();
+        break;
+      case 'skipNext':
+        handleSkipNext();
+        break;
+      case 'skipPrevious':
+        handleSkipPrevious();
+      default:
+        return;
+    }
+  });
+
+  function handlePlaybackEnd() {
+    queue.activeIndex = queue.activeIndex + 1;
+    handlePlay();
+  }
+
+  function handlePlay() {
+    const queueItem = queue.items[queue.activeIndex];
+    if (queueItem) {
+      player.newSource(queueItem.path, 'local', false, -500);
+      player.once('close', handlePlaybackEnd);
+      io.emit('message', {
+        key: 'playing',
+        severity: 'success',
+        message: `Playing ${queueItem.name}`
+      });
+    } else {
+      queue.activeIndex = 0;
+      io.emit('message', {
+        key: 'playing',
+        severity: 'error',
+        message: `Add some items to the queue`
+      });
+    }
+  }
+
+  function handleStop() {
+    if (player.running) {
+      player.quit();
+    }
+
+    io.emit('message', {
+      severity: 'info',
+      message: 'Stopped',
+      key: 'stop'
+    });
+  }
+
+  function handlePause() {
+    if (player && player.running) {
+      player.pause();
+    }
+
+    io.emit('message', {
+      severity: 'info',
+      message: 'Paused',
+      key: 'pause'
+    });
+  }
+  
+  function handleSkipNext() {
+    console.log('skip next');
+  }
+  
+  function handleSkipPrevious() {
+    console.log('skip previous');
+  }
+
+  function handleVol(direction) {
+    if (player && player.running) {
+      switch (direction) {
+        case 'down':
+          player.volDown();
+          io.emit('message', {
+            severity: 'info',
+            message: 'Decreased Volume',
+            key: 'decreaseVolume'});
+          break;
+        case 'up':
+          player.volUp();
+          io.emit('message', {
+            severity: 'info',
+            message: 'Increased Volume',
+            key: 'increaseVolume'
+          });
+          break;
+        default:
+          return;
+      }
+    }
+  }
+
+
+  function getMusic(dir) {
+    return new Promise((resolve, reject) => {
+      try {
+        const tree = directoryTree(dir);
+        resolve(tree);
+      } catch(err){
+        reject(err);
+      };
+    });
+  }
+
 });
 

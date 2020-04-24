@@ -1,22 +1,90 @@
-import React from "react";
-import { createGlobalStyle } from "styled-components";
-import Socket from "./Components/Containers/Socket";
+import React, { useEffect, useState } from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+  Link
+} from "react-router-dom";
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Container from '@material-ui/core/Container';
+import Box from '@material-ui/core/Box';
+import io from "socket.io-client";
+import Home from "./Components/Containers/Home";
+import Library from "./Components/Containers/Library";
+import Queue from "./Components/Containers/Queue";
+import Snack from "./Components/Containers/Snack";
+import BottomNav from "./Components/Molecules/BottomNav";
+import Controls from "./Components/Containers/Controls";
 
-const GlobalStyle = createGlobalStyle`
-  * {
-    box-sizing: border-box;
-  }
-  body {
-    margin: 0;
-    font: sans-serif;
-  }
-`;
+const socket = io.connect("http://192.168.0.38:8080");
 
-const App = () => (
-  <>
-    <GlobalStyle />
-    <Socket />
-  </>
-);
+const App = () => {
+  const [library, setLibrary] = useState({});
+  const [queue, setQueue] = useState({ items: [], activeIndex: 0 });
+  
+  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
+
+  const theme = React.useMemo(
+    () =>
+      createMuiTheme({
+        palette: {
+          type: prefersDarkMode ? 'dark' : 'light',
+        },
+      }),
+    [prefersDarkMode],
+  );
+
+  useEffect(() => {
+    socket.on("library", (nodes) => setLibrary(nodes));
+    socket.on("queue", (queue) => setQueue(queue));
+  }, []);
+
+  return (
+    <ThemeProvider theme={theme}>
+      <Router>
+        <CssBaseline />
+        <Box
+          display="flex"
+          flexDirection="column"
+          position="relative"
+          height={window.innerHeight}
+          overflow="hidden"
+        >
+          <Box
+            flex="1 0 70%"
+            overflow="hidden"
+            position="relative"
+          >
+            <Snack socket={socket} />
+            <Switch>
+              <Route exact path="/">
+                <Home
+                  socket={socket}
+                  queue={queue}
+                />
+              </Route>
+              <Route path="/library">
+                <Library
+                  socket={socket}
+                  library={library}
+                />
+              </Route>
+              <Route path="/queue">
+                <Queue
+                  socket={socket}
+                  queue={queue}
+                />
+              </Route>
+            </Switch>
+          </Box>
+          <BottomNav style={{ flex: '0 1 auto' }}/>
+        </Box>
+      </Router>
+    </ThemeProvider>
+  );
+};
 
 export default App;
