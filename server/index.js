@@ -6,20 +6,18 @@ const favicon = require('serve-favicon');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
-const io = require('socket.io').listen(server);
+const socket = require('socket.io');
 const omx = require('node-omxplayer');
 const cors = require('cors');
 const fs = require('fs');
 const directoryTree = require('directory-tree');
+const store = require('./store');
+const actions = store.getActions();
 
-let player;
-let remote;
-let currentTrack;
-let music;
-let queue = {
-  items: [],
-  activeIndex: 0
-};
+actions.socket.setSocket(socket.listen(server));
+const io = store.getState().socket.io;
+
+actions.library.getMusic('/home/pi/Music');
 
 // Config
 
@@ -44,92 +42,56 @@ server.listen(app.get('port'), function() {
 
 // Socket
 io.on('connection', async function(socket) {
+  
+  // Actions on new connection
   console.log('remote connected');
+  actions.library.getMusic('/home/pi/Music');
+  io.emit('queue', store.getState().queue);
 
   socket.on('disconnect', function() {
     console.log('disconnected');
   });
-  
-  // handle player creation
-  player = player || omx();
-
-  // read music from filesystem and send it to app
-  try {
-    music = music || await getMusic('/home/pi/Music');
-    // console.log(JSON.stringify(music, null, 2));
-    io.emit('library', music);
-    io.emit('queue', queue);
-  } catch(err) {
-    console.log(err);
-  }
 
   socket.on('updateQueue', (payload) => {
     const { type, path, name } = payload;
-    const { items, activeIndex } = queue
 
     switch(type) {
-      case 'add':
-        queue.items.push({ path, name });
-        io.emit('message', {
-          message: `Added to end of queue: ${name}`,
-          key: path,
-          severity: 'success'
-        });
+      case 'addItemAtEnd':
+        actions.queue.addItemAtEnd({ path, name });
         break;
-      case 'playIndex':
-        queue.activeIndex = payload.index;
-        handlePlay();
+      case 'addItemNext':
+        actions.queue.addItemNext({ path, name });
         break;
-      case 'removeIndex':
-        const shouldPlayNext = queue.activeIndex === payload.index
-        queue.items.splice(payload.index, 1);
-        if (shouldPlayNext) {
-          handlePlay();
-        }
+      case 'removeItem':
+        actions.queue.removeItem(payload.index);
         break;
-      case 'playNow':
-        if (items.length) {
-          items.splice(activeIndex + 1, 0, { path, name });
-          handlePlayNext();
-        } else {
-          items.push({path, name});
-          handlePlay();
-        }
+      case 'removeAllItems':
+        actions.queue.removeAllItems();
         break;
-      case 'playNext':
-        items.splice(activeIndex + 1, 0, { path, name });
-        io.emit('message', {
-          message: `Added next in queue: ${name}`,
-          key: path,
-          severity: 'success'
-        });
+      case 'setActiveIndex':
+        actions.queue.setActiveIndex(payload.index);
         break;
-      case 'clear':
-        if (player.running) {
-          player.quit();
-        }
-        queue = { items: [], activeIndex: 0 };
-        io.emit('message', {
-          message: 'Cleared Queue',
-          key: 'clear',
-          severity: 'success'
-        });
+      case 'addItemNextAndPlay':
+        actions.queue.addItemNextAndPlay({ name, path });
         break;
+      
       default:
-        console.log(type, path, name);
+        console.log('updateQueue action not executed', type, path, name);
         return;
     };
-    io.emit('queue', queue);
   });
 
   socket.on('control', function(payload) {
     console.log('control', payload.type, JSON.stringify(payload, null, 2));
     switch (payload.type) {
       case 'play':
-        handlePlay();
+        actions.queue.player.omx.play(store.getState.queue.nowPlaying)
         break;
-      case 'stop':
-        handleStop();
+      case 'playNext':
+        actions.queue.setActiveIndex(store.getState().queue.activeIndex + 1);
+        break;
+      case 'playPrevious':
+        actions.queue.setActiveIndex(store.getState().queue.activeIndex - 1);
         break;
       case 'volume':
         handleVol(payload.direction);
@@ -140,71 +102,10 @@ io.on('connection', async function(socket) {
       case 'backward30':
         player.running && player.back30();
         break;
-      case 'playNext':
-        handlePlayNext();
-        break;
-      case 'playPrevious':
-        handlePlayPrevious();
-        break;
       default:
         return;
     }
   });
-
-  function handlePlayNext() {
-    queue.activeIndex = queue.activeIndex + 1;
-    handlePlay();
-  }
-  
-  function handlePlayPrevious() {
-    queue.activeIndex = queue.activeIndex - 1;
-    handlePlay();
-  }
-
-  function handlePlay() {
-    const queueItem = queue.items[queue.activeIndex];
-    if (queueItem) {
-      player.newSource(queueItem.path, 'local', false, -500);
-      player.once('close', handlePlayNext);
-      io.emit('message', {
-        key: 'playing',
-        severity: 'success',
-        message: `Playing ${queueItem.name}`
-      });
-    } else {
-      queue.activeIndex = 0;
-      io.emit('message', {
-        key: 'playing',
-        severity: 'error',
-        message: `Add some items to the queue`
-      });
-    }
-    io.emit('queue', queue);
-  }
-
-  function handleStop() {
-    if (player.running) {
-      player.quit();
-    }
-
-    io.emit('message', {
-      severity: 'info',
-      message: 'Stopped',
-      key: 'stop'
-    });
-  }
-
-  function handlePause() {
-    if (player && player.running) {
-      player.pause();
-    }
-
-    io.emit('message', {
-      severity: 'info',
-      message: 'Paused',
-      key: 'pause'
-    });
-  }
 
   function handleVol(direction) {
     if (player && player.running) {
@@ -228,18 +129,6 @@ io.on('connection', async function(socket) {
           return;
       }
     }
-  }
-
-
-  function getMusic(dir) {
-    return new Promise((resolve, reject) => {
-      try {
-        const tree = directoryTree(dir);
-        resolve(tree);
-      } catch(err){
-        reject(err);
-      };
-    });
   }
 
 });

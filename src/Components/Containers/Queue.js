@@ -18,7 +18,7 @@ import {
 const Queue = ({ socket, queue, emitUpdateQueue }) => {
   const ClearQueue = () => (
     <IconButton
-      onClick={() => emitUpdateQueue({ type: "clear" })}
+      onClick={() => emitUpdateQueue({ type: "removeAllItems" })}
       color="inherit"
     >
       <DeleteIcon />
@@ -36,14 +36,14 @@ const Queue = ({ socket, queue, emitUpdateQueue }) => {
                 button
                 divider
                 selected={index === queue.activeIndex}
-                onClick={() => emitUpdateQueue({ type: "playIndex", index })}
+                onClick={() => emitUpdateQueue({ type: "setActiveIndex", index })}
               >
                 <ListItemText>{`${index + 1}. ${item.name}`}</ListItemText>
                 <ListItemSecondaryAction>
                   <IconButton
                     edge="end"
                     onClick={() =>
-                      emitUpdateQueue({ type: "removeIndex", index })}
+                      emitUpdateQueue({ type: "removeItem", index })}
                   >
                     <CloseIcon />
                   </IconButton>

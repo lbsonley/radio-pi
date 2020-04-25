@@ -38,7 +38,7 @@ const LibraryItem = ({ path, name, emitUpdateQueue }) => {
           <Button
             onClick={() =>
               emitUpdateQueue({
-                type: "add",
+                type: "addItemAtEnd",
                 name,
                 path,
               })}
@@ -56,7 +56,7 @@ const LibraryItem = ({ path, name, emitUpdateQueue }) => {
               onClick={(e) => {
                 togglePlayPopper(e);
                 emitUpdateQueue({
-                  type: "playNext",
+                  type: "addItemNext",
                   name,
                   path,
                 });
@@ -68,7 +68,7 @@ const LibraryItem = ({ path, name, emitUpdateQueue }) => {
               onClick={(e) => {
                 togglePlayPopper(e);
                 emitUpdateQueue({
-                  type: "playNow",
+                  type: "addItemNextAndPlay",
                   name,
                   path,
                 });
