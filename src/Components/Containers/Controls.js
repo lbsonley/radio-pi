@@ -1,17 +1,17 @@
-import React from 'react';
+import React from "react";
+import PropTypes from "prop-types";
 import Box from "@material-ui/core/Box";
 import Paper from "@material-ui/core/Paper";
-import IconButton from '@material-ui/core/IconButton';
 import VolumeControls from "../Molecules/VolumeControls";
 import PlaybackControlsPrimary from "../Molecules/PlaybackControlsPrimary";
 import PlaybackControlsSecondary from "../Molecules/PlaybackControlsSecondary";
+import { socketPropTypes } from "../../prop-types";
 
-
-const Controls = ({ socket, minimum = false }) => {
+const Controls = ({ socket, minimum }) => {
   const handleClick = (payload) => {
-    socket.emit('control', payload);
+    socket.emit("control", payload);
   };
-  
+
   return (
     <Box component={Paper} elevation={10}>
       {minimum ? (
@@ -27,6 +27,15 @@ const Controls = ({ socket, minimum = false }) => {
       )}
     </Box>
   );
+};
+
+Controls.defaultProps = {
+  minimum: false,
+};
+
+Controls.propTypes = {
+  socket: socketPropTypes.isRequired,
+  minimum: PropTypes.bool,
 };
 
 export default Controls;

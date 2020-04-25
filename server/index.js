@@ -76,6 +76,26 @@ io.on('connection', async function(socket) {
           severity: 'success'
         });
         break;
+      case 'playIndex':
+        queue.activeIndex = payload.index;
+        handlePlay();
+        break;
+      case 'removeIndex':
+        const shouldPlayNext = queue.activeIndex === payload.index
+        queue.items.splice(payload.index, 1);
+        if (shouldPlayNext) {
+          handlePlay();
+        }
+        break;
+      case 'playNow':
+        if (items.length) {
+          items.splice(activeIndex + 1, 0, { path, name });
+          handlePlayNext();
+        } else {
+          items.push({path, name});
+          handlePlay();
+        }
+        break;
       case 'playNext':
         items.splice(activeIndex + 1, 0, { path, name });
         io.emit('message', {
@@ -85,6 +105,9 @@ io.on('connection', async function(socket) {
         });
         break;
       case 'clear':
+        if (player.running) {
+          player.quit();
+        }
         queue = { items: [], activeIndex: 0 };
         io.emit('message', {
           message: 'Cleared Queue',
@@ -117,18 +140,24 @@ io.on('connection', async function(socket) {
       case 'backward30':
         player.running && player.back30();
         break;
-      case 'skipNext':
-        handleSkipNext();
+      case 'playNext':
+        handlePlayNext();
         break;
-      case 'skipPrevious':
-        handleSkipPrevious();
+      case 'playPrevious':
+        handlePlayPrevious();
+        break;
       default:
         return;
     }
   });
 
-  function handlePlaybackEnd() {
+  function handlePlayNext() {
     queue.activeIndex = queue.activeIndex + 1;
+    handlePlay();
+  }
+  
+  function handlePlayPrevious() {
+    queue.activeIndex = queue.activeIndex - 1;
     handlePlay();
   }
 
@@ -136,7 +165,7 @@ io.on('connection', async function(socket) {
     const queueItem = queue.items[queue.activeIndex];
     if (queueItem) {
       player.newSource(queueItem.path, 'local', false, -500);
-      player.once('close', handlePlaybackEnd);
+      player.once('close', handlePlayNext);
       io.emit('message', {
         key: 'playing',
         severity: 'success',
@@ -150,6 +179,7 @@ io.on('connection', async function(socket) {
         message: `Add some items to the queue`
       });
     }
+    io.emit('queue', queue);
   }
 
   function handleStop() {
@@ -174,14 +204,6 @@ io.on('connection', async function(socket) {
       message: 'Paused',
       key: 'pause'
     });
-  }
-  
-  function handleSkipNext() {
-    console.log('skip next');
-  }
-  
-  function handleSkipPrevious() {
-    console.log('skip previous');
   }
 
   function handleVol(direction) {

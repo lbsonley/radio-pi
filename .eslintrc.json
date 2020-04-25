@@ -2,9 +2,13 @@
   "env": {
     "browser": true
   },
+  "plugins": [
+    "prettier"
+  ],
   "extends": [
     "airbnb",
-    "plugin:prettier/recommended"
+    "prettier",
+    "prettier/react"
   ],
   "rules": {
     "react/jsx-filename-extension": ["error", { "extensions": [".jsx", ".js"] }]

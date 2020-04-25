@@ -3,15 +3,23 @@ import Snackbar from "@material-ui/core/Snackbar";
 import Alert from "@material-ui/lab/Alert";
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
+import { socketPropTypes } from "../../prop-types";
 
 const Snack = ({ socket }) => {
   const queueRef = useRef([]);
   const [open, setOpen] = useState(false);
   const [messageInfo, setMessageInfo] = useState(undefined);
 
+  const processQueue = () => {
+    if (queueRef.current.length > 0) {
+      setMessageInfo(queueRef.current.shift());
+      setOpen(true);
+    }
+  };
+
   useEffect(() => {
-    socket.on("message", (messageInfo) => {
-      queueRef.current.push(messageInfo);
+    socket.on("message", (payload) => {
+      queueRef.current.push(payload);
 
       if (open) {
         // immediately begin dismissing current message
@@ -22,13 +30,6 @@ const Snack = ({ socket }) => {
       }
     });
   }, []);
-
-  const processQueue = () => {
-    if (queueRef.current.length > 0) {
-      setMessageInfo(queueRef.current.shift());
-      setOpen(true);
-    }
-  };
 
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
@@ -66,6 +67,10 @@ const Snack = ({ socket }) => {
       ) : null}
     </Snackbar>
   );
+};
+
+Snack.propTypes = {
+  socket: socketPropTypes.isRequired,
 };
 
 export default Snack;

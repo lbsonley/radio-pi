@@ -1,24 +1,21 @@
-import React, { useState, useEffect } from "react";
-import PropTypes from "prop-types";
+import React from "react";
 import Box from "@material-ui/core/Box";
 import TreeView from "@material-ui/lab/TreeView";
 import TreeItem from "@material-ui/lab/TreeItem";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
-import LibraryItem from "../Molecules/LibraryItem.js";
+import LibraryItem from "../Molecules/LibraryItem";
 import Controls from "./Controls";
 import Layout from "../Layouts/Layout";
+import {
+  socketPropTypes,
+  libraryPropTypes,
+  emitUpdateQueuePropTypes,
+} from "../../prop-types";
 
-const Library = ({ socket, library }) => {
-
-  const emitQueueUpdate = ({ type, path, name }) =>
-    socket.emit("updateQueue", { type, path, name });
-
+const Library = ({ socket, library, emitUpdateQueue }) => {
   const renderTree = (node) => (
-    <Box
-      key={node.name}
-      pt={!!node.children ? 3 : 2}
-    >
+    <Box key={node.name} pt={node.children ? 3 : 2}>
       <TreeItem
         key={node.name}
         nodeId={node.name}
@@ -32,7 +29,7 @@ const Library = ({ socket, library }) => {
             </span>
           ) : (
             <LibraryItem
-              emitQueueUpdate={emitQueueUpdate}
+              emitUpdateQueue={emitUpdateQueue}
               path={node.path}
               name={node.name
                 .replace(/[_]/g, " ")
@@ -60,15 +57,15 @@ const Library = ({ socket, library }) => {
           {library.children && renderTree(library)}
         </TreeView>
       </Box>
-      <Controls socket={socket} minimum/>
+      <Controls socket={socket} minimum />
     </Layout>
   );
 };
 
 Library.propTypes = {
-  socket: PropTypes.shape({
-    emit: PropTypes.func,
-  }).isRequired,
+  socket: socketPropTypes.isRequired,
+  library: libraryPropTypes.isRequired,
+  emitUpdateQueue: emitUpdateQueuePropTypes.isRequired,
 };
 
 export default Library;
