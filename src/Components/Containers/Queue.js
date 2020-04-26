@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Box from "@material-ui/core/Box";
 import IconButton from "@material-ui/core/IconButton";
 import List from "@material-ui/core/List";
@@ -16,6 +16,9 @@ import {
 } from "../../prop-types";
 
 const Queue = ({ socket, queue, emitUpdateQueue }) => {
+  
+  useEffect(() => { socket.emit("update") }, []);
+  
   const ClearQueue = () => (
     <IconButton
       onClick={() => emitUpdateQueue({ type: "removeAllItems" })}
@@ -60,7 +63,7 @@ const Queue = ({ socket, queue, emitUpdateQueue }) => {
 Queue.propTypes = {
   socket: socketPropTypes.isRequired,
   queue: queuePropTypes.isRequired,
-  emitUpdateQueue: emitUpdateQueuePropTypes.isRequired,
+  emitUpdateQueue: emitUpdateQueuePropTypes.isRequired
 };
 
 export default Queue;

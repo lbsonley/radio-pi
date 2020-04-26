@@ -30,6 +30,7 @@ const App = () => {
   );
 
   useEffect(() => {
+    socket.emit("update");
     socket.on("library", (nodes) => setLibrary(nodes));
     socket.on("queue", (playQueue) => setQueue(playQueue));
   }, []);
@@ -51,7 +52,10 @@ const App = () => {
             <Snack socket={socket} />
             <Switch>
               <Route exact path="/">
-                <Home socket={socket} queue={queue} />
+                <Home
+                  socket={socket}
+                  queue={queue}
+                />
               </Route>
               <Route path="/library">
                 <Library

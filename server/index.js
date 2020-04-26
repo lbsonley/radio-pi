@@ -46,7 +46,14 @@ io.on('connection', async function(socket) {
   // Actions on new connection
   console.log('remote connected');
   actions.library.getMusic('/home/pi/Music');
-  io.emit('queue', store.getState().queue);
+  
+  socket.on('update', () => {
+    io.emit('queue', store.getState().queue);
+    io.emit('playerState', {
+      running: store.getState().player.omx.running,
+      paused: store.getState().player.paused
+    });
+  });
 
   socket.on('disconnect', function() {
     console.log('disconnected');
@@ -82,10 +89,15 @@ io.on('connection', async function(socket) {
   });
 
   socket.on('control', function(payload) {
-    console.log('control', payload.type, JSON.stringify(payload, null, 2));
     switch (payload.type) {
       case 'play':
-        actions.queue.player.omx.play(store.getState.queue.nowPlaying)
+        actions.player.play(store.getState().queue.nowPlaying)
+        break;
+      case 'resume':
+        actions.player.resume();
+        break;
+      case 'pause':
+        actions.player.pause()
         break;
       case 'playNext':
         actions.queue.setActiveIndex(store.getState().queue.activeIndex + 1);
@@ -93,43 +105,23 @@ io.on('connection', async function(socket) {
       case 'playPrevious':
         actions.queue.setActiveIndex(store.getState().queue.activeIndex - 1);
         break;
-      case 'volume':
-        handleVol(payload.direction);
+      case 'volumeUp':
+        actions.player.volumeUp();
+        break;
+      case 'volumeDown':
+        actions.player.volumeDown();
         break;
       case 'forward30':
-        player.running && player.fwd30();
+        actions.player.forward30();
         break;
       case 'backward30':
-        player.running && player.back30();
+        actions.player.backward30();
         break;
       default:
+        console.log('control action not executed', type, path, name);
         return;
     }
   });
-
-  function handleVol(direction) {
-    if (player && player.running) {
-      switch (direction) {
-        case 'down':
-          player.volDown();
-          io.emit('message', {
-            severity: 'info',
-            message: 'Decreased Volume',
-            key: 'decreaseVolume'});
-          break;
-        case 'up':
-          player.volUp();
-          io.emit('message', {
-            severity: 'info',
-            message: 'Increased Volume',
-            key: 'increaseVolume'
-          });
-          break;
-        default:
-          return;
-      }
-    }
-  }
 
 });
 

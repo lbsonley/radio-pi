@@ -6,7 +6,7 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 
-const Layout = ({ title, controls, appBarAction, children }) => (
+const Layout = ({ title, appBarAction, children }) => (
   <Box height="100%" display="flex" flexDirection="column">
     <AppBar
       position="static"
@@ -31,14 +31,16 @@ const Layout = ({ title, controls, appBarAction, children }) => (
         {children}
       </Box>
     </Container>
-    {controls ? <Box flex="0 1 auto">{controls}</Box> : null}
   </Box>
 );
 
+Layout.defaultProps = {
+  appBarAction: false
+};
+
 Layout.propTypes = {
   title: PropTypes.string.isRequired,
-  controls: PropTypes.node.isRequired,
-  appBarAction: PropTypes.node.isRequired,
+  appBarAction: PropTypes.node,
   children: PropTypes.node.isRequired,
 };
 

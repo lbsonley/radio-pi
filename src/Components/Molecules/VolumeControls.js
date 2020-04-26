@@ -9,14 +9,14 @@ const VolumeControls = ({ handleClick }) => {
   return (
     <Box display="flex">
       <IconButton
-        onClick={() => handleClick({ type: "volume", direction: "up" })}
+        onClick={() => handleClick({ type: "volumeUp" })}
         color="primary"
         aria-label="volume up"
       >
         <VolumeUpIcon />
       </IconButton>
       <IconButton
-        onClick={() => handleClick({ type: "volume", direction: "down" })}
+        onClick={() => handleClick({ type: "volumeDown" })}
         color="primary"
         aria-label="volume down"
       >

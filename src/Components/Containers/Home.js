@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import Layout from "../Layouts/Layout";
@@ -7,6 +7,8 @@ import { socketPropTypes, queuePropTypes } from "../../prop-types";
 
 const Home = ({ socket, queue }) => {
   const nowPlaying = queue.items[queue.activeIndex];
+  
+  useEffect(() => { socket.emit("update") }, []);
 
   return (
     <Layout title="Home">
@@ -25,7 +27,7 @@ const Home = ({ socket, queue }) => {
 
 Home.propTypes = {
   socket: socketPropTypes.isRequired,
-  queue: queuePropTypes.isRequired,
+  queue: queuePropTypes.isRequired
 };
 
 export default Home;

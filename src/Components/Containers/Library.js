@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Box from "@material-ui/core/Box";
 import TreeView from "@material-ui/lab/TreeView";
 import TreeItem from "@material-ui/lab/TreeItem";
@@ -14,6 +14,9 @@ import {
 } from "../../prop-types";
 
 const Library = ({ socket, library, emitUpdateQueue }) => {
+  
+  useEffect(() => { socket.emit("update") }, []);
+  
   const renderTree = (node) => (
     <Box key={node.name} pt={node.children ? 3 : 2}>
       <TreeItem
@@ -65,7 +68,7 @@ const Library = ({ socket, library, emitUpdateQueue }) => {
 Library.propTypes = {
   socket: socketPropTypes.isRequired,
   library: libraryPropTypes.isRequired,
-  emitUpdateQueue: emitUpdateQueuePropTypes.isRequired,
+  emitUpdateQueue: emitUpdateQueuePropTypes.isRequired
 };
 
 export default Library;
