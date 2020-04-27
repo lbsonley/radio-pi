@@ -37,12 +37,31 @@ const queueModel = {
   }),
   
   setActiveIndex: action((state, payload) => {
-    state.activeIndex = payload
+    state.activeIndex = payload;
   }),
+  
+  updateActiveIndex: action((state, payload) => {
+    state.activeIndex = payload;
+  }),
+  
+  onRemoveItem: thunkOn(
+    actions => actions.removeItem,
+    (actions, target, helpers) => {
+      const queue = helpers.getState();
+      if (target.payload < queue.activeIndex) {
+        actions.updateActiveIndex(queue.activeIndex - 1);
+      } else if (target.payload === queue.items.length) {
+        actions.updateActiveIndex(0);
+        helpers.getStoreActions().player.quit();
+      } else if (target.payload === queue.activeIndex) {
+        actions.setActiveIndex(queue.activeIndex);
+      }
+    }
+  ),
   
   onAddItemNextAndPlay: thunkOn(
     actions => actions.addItemNextAndPlay,
-    (actions, payload, helpers) => helpers.getState().items.length > 1 ?
+    (actions, target, helpers) => helpers.getState().items.length > 1 ?
       actions.setActiveIndex(helpers.getState().activeIndex + 1) :
       actions.setActiveIndex(0)
   )

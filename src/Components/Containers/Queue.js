@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Box from "@material-ui/core/Box";
 import IconButton from "@material-ui/core/IconButton";
 import List from "@material-ui/core/List";
@@ -16,8 +16,6 @@ import {
 } from "../../prop-types";
 
 const Queue = ({ socket, queue, emitUpdateQueue }) => {
-  
-  useEffect(() => { socket.emit("update") }, []);
   
   const ClearQueue = () => (
     <IconButton

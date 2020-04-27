@@ -13,7 +13,8 @@ const socketModel = {
       storeActions.player.play.successType,
       storeActions.player.play.failType,
       storeActions.player.resume,
-      storeActions.player.pause
+      storeActions.player.pause,
+      storeActions.player.quit
     ],
     (actions, target, helpers) => {
       const io = helpers.getState().io;
@@ -22,7 +23,8 @@ const socketModel = {
         playSuccessType,
         playFailType,
         resume,
-        pause
+        pause,
+        quit
       ] = target.resolvedTargets;
 
       switch (target.type) {
@@ -33,7 +35,7 @@ const socketModel = {
             severity: 'success'
           });
           io.emit('playerState', {
-            running: playerState.omx.running,
+            running: playerState.running,
             paused: playerState.paused
           });
           break;
@@ -51,7 +53,7 @@ const socketModel = {
             severity: 'success'
           });
           io.emit('playerState', {
-            running: playerState.omx.running,
+            running: playerState.running,
             paused: playerState.paused
           });
           break;
@@ -62,9 +64,22 @@ const socketModel = {
             severity: 'success'
           });
           io.emit('playerState', {
-            running: playerState.omx.running,
+            running: playerState.running,
             paused: playerState.paused
           });
+          break;
+        case quit: 
+          io.emit('message', {
+            message: `Stopped`,
+            key: 'stopped',
+            severity: 'success'
+          });
+          console.log('running', playerState.omx.running);
+          io.emit('playerState', {
+            running: playerState.running,
+            paused: playerState.paused
+          });
+          break;
         default:
           return;
       }
@@ -87,7 +102,12 @@ const socketModel = {
   ),
   
   onUpdateQueue: thunkOn(
-    (actions, storeActions) => Object.values(storeActions.queue),
+    (actions, storeActions) => [
+      storeActions.queue.addItemAtEnd,
+      storeActions.queue.addItemNext,
+      storeActions.queue.removeItem,
+      storeActions.queue.removeAllItems
+    ],
     (actions, target, helpers) => {
       const queue = helpers.getStoreState().queue;
       const io = helpers.getState().io;
@@ -97,7 +117,6 @@ const socketModel = {
       const [
         addItemAtEnd,
         addItemNext,
-        addItemNextAndPlay,
         removeItem,
         removeAllItems
       ] = target.resolvedTargets;
@@ -114,13 +133,6 @@ const socketModel = {
           io.emit('message', {
             message: `Added next in queue: ${target.payload.name}`,
             key: target.payload.path,
-            severity: 'success'
-          });
-          break;
-        case addItemNextAndPlay:
-          io.emit('message', {
-            message: `Added next in queue: ${target.payload.name}`,
-            key: 'addNextAndPlay',
             severity: 'success'
           });
           break;

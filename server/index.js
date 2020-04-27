@@ -42,21 +42,17 @@ server.listen(app.get('port'), function() {
 
 // Socket
 io.on('connection', async function(socket) {
-  
-  // Actions on new connection
   console.log('remote connected');
-  actions.library.getMusic('/home/pi/Music');
-  
-  socket.on('update', () => {
-    io.emit('queue', store.getState().queue);
-    io.emit('playerState', {
-      running: store.getState().player.omx.running,
-      paused: store.getState().player.paused
-    });
-  });
-
   socket.on('disconnect', function() {
     console.log('disconnected');
+  });
+
+  // Send data every time a connection occurs
+  actions.library.getMusic('/home/pi/Music');
+  io.emit('queue', store.getState().queue);
+  io.emit('playerState', {
+    running: store.getState().player.omx.running,
+    paused: store.getState().player.paused
   });
 
   socket.on('updateQueue', (payload) => {
@@ -91,9 +87,11 @@ io.on('connection', async function(socket) {
   socket.on('control', function(payload) {
     switch (payload.type) {
       case 'play':
+        console.log('control type: play');
         actions.player.play(store.getState().queue.nowPlaying)
         break;
       case 'resume':
+        console.log('control type: resume');
         actions.player.resume();
         break;
       case 'pause':

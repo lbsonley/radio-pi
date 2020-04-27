@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Box from "@material-ui/core/Box";
 import TreeView from "@material-ui/lab/TreeView";
 import TreeItem from "@material-ui/lab/TreeItem";
@@ -15,8 +15,6 @@ import {
 
 const Library = ({ socket, library, emitUpdateQueue }) => {
   
-  useEffect(() => { socket.emit("update") }, []);
-  
   const renderTree = (node) => (
     <Box key={node.name} pt={node.children ? 3 : 2}>
       <TreeItem
@@ -28,7 +26,7 @@ const Library = ({ socket, library, emitUpdateQueue }) => {
               {node.name
                 .replace(/[_]/g, " ")
                 .replace(/[-]/g, " - ")
-                .replace(/(.mp4)/, "")}
+                .replace(/(.mp[0-9])/, "")}
             </span>
           ) : (
             <LibraryItem
@@ -37,7 +35,7 @@ const Library = ({ socket, library, emitUpdateQueue }) => {
               name={node.name
                 .replace(/[_]/g, " ")
                 .replace(/[-]/g, " - ")
-                .replace(/(.mp4)/, "")}
+                .replace(/(.mp[0-9])/, "")}
             />
           )
         }

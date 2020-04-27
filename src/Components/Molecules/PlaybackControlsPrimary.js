@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import Box from "@material-ui/core/Box";
 import IconButton from "@material-ui/core/IconButton";
@@ -6,12 +6,14 @@ import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import PauseIcon from "@material-ui/icons/Pause";
 import SkipNextIcon from "@material-ui/icons/SkipNext";
 import SkipPreviousIcon from "@material-ui/icons/SkipPrevious";
+import PlayerContext from "../Contexts/PlayerContext";
 
-const PlaybackControlsPrimary = ({ handleClick, playerState }) => {
+const PlaybackControlsPrimary = ({ handleClick }) => {
+  const playerState = useContext(PlayerContext);
   const { running, paused } = playerState;
   
   const PlayPauseButton = () => {
-    if (running && paused) {
+    if (paused) {
       return (
         <IconButton
           onClick={() => handleClick({ type: "resume" })}
@@ -26,7 +28,7 @@ const PlaybackControlsPrimary = ({ handleClick, playerState }) => {
         <IconButton
           onClick={() => handleClick({ type: "pause" })}
           color="primary"
-          aria-label="play"
+          aria-label="pause"
         >
           <PauseIcon fontSize="large" />
         </IconButton>
@@ -66,11 +68,7 @@ const PlaybackControlsPrimary = ({ handleClick, playerState }) => {
 };
 
 PlaybackControlsPrimary.propTypes = {
-  handleClick: PropTypes.func.isRequired,
-  playerState: PropTypes.shape({
-    running: PropTypes.bool.isRequired,
-    paused: PropTypes.bool.isRequired
-  }).isRequired
+  handleClick: PropTypes.func.isRequired
 };
 
 export default PlaybackControlsPrimary;
