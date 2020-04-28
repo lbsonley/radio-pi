@@ -37,7 +37,10 @@ const Queue = ({ socket, queue, emitUpdateQueue }) => {
                 button
                 divider
                 selected={index === queue.activeIndex}
-                onClick={() => emitUpdateQueue({ type: "setActiveIndex", index })}
+                onClick={() => emitUpdateQueue({
+                  type: "setTrack",
+                  index
+                })}
               >
                 <ListItemText>{`${index + 1}. ${item.name}`}</ListItemText>
                 <ListItemSecondaryAction>

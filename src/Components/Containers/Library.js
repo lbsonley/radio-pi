@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import PropTypes from "prop-types";
 import Box from "@material-ui/core/Box";
 import TreeView from "@material-ui/lab/TreeView";
 import TreeItem from "@material-ui/lab/TreeItem";
@@ -13,7 +14,7 @@ import {
   emitUpdateQueuePropTypes,
 } from "../../prop-types";
 
-const Library = ({ socket, library, emitUpdateQueue }) => {
+const Library = ({ socket, library, emitUpdateQueue, expanded, handleToggle }) => {
   
   const renderTree = (node) => (
     <Box key={node.name} pt={node.children ? 3 : 2}>
@@ -51,9 +52,11 @@ const Library = ({ socket, library, emitUpdateQueue }) => {
     <Layout title="Library">
       <Box flex="1 0 50%" overflow="scroll" mb={2}>
         <TreeView
-          defaultCollapseIcon={<ExpandMoreIcon />}
           defaultExpanded={["Music"]}
+          defaultCollapseIcon={<ExpandMoreIcon />}
           defaultExpandIcon={<ChevronRightIcon />}
+          expanded={expanded}
+          onNodeToggle={handleToggle}
         >
           {library.children && renderTree(library)}
         </TreeView>
@@ -66,7 +69,9 @@ const Library = ({ socket, library, emitUpdateQueue }) => {
 Library.propTypes = {
   socket: socketPropTypes.isRequired,
   library: libraryPropTypes.isRequired,
-  emitUpdateQueue: emitUpdateQueuePropTypes.isRequired
+  emitUpdateQueue: emitUpdateQueuePropTypes.isRequired,
+  expanded: PropTypes.arrayOf(PropTypes.string).isRequired,
+  handleToggle: PropTypes.func.isRequired
 };
 
 export default Library;

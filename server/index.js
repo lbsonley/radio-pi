@@ -71,8 +71,8 @@ io.on('connection', async function(socket) {
       case 'removeAllItems':
         actions.queue.removeAllItems();
         break;
-      case 'setActiveIndex':
-        actions.queue.setActiveIndex(payload.index);
+      case 'setTrack':
+        actions.queue.setTrack(payload.index);
         break;
       case 'addItemNextAndPlay':
         actions.queue.addItemNextAndPlay({ name, path });
@@ -87,21 +87,19 @@ io.on('connection', async function(socket) {
   socket.on('control', function(payload) {
     switch (payload.type) {
       case 'play':
-        console.log('control type: play');
         actions.player.play(store.getState().queue.nowPlaying)
         break;
       case 'resume':
-        console.log('control type: resume');
         actions.player.resume();
         break;
       case 'pause':
         actions.player.pause()
         break;
       case 'playNext':
-        actions.queue.setActiveIndex(store.getState().queue.activeIndex + 1);
+        actions.queue.skipTrack(store.getState().queue.activeIndex + 1);
         break;
       case 'playPrevious':
-        actions.queue.setActiveIndex(store.getState().queue.activeIndex - 1);
+        actions.queue.skipTrack(store.getState().queue.activeIndex - 1);
         break;
       case 'volumeUp':
         actions.player.volumeUp();

@@ -14,6 +14,7 @@ const socket = io.connect("http://192.168.0.38:8080");
 
 const App = () => {
   const [library, setLibrary] = useState({});
+  const [expanded, setExpanded] = useState(["Artists", "Music"]);
   const [queue, setQueue] = useState({
     items: [],
     activeIndex: 0,
@@ -23,6 +24,13 @@ const App = () => {
     running: false,
     paused: false
   });
+   
+  const handleToggle = (e, nodeIds) => {
+    console.log('nodeIds', nodeIds);
+    setExpanded(nodeIds);
+  };
+  
+  const emitUpdateQueue = (payload) => socket.emit("updateQueue", payload);
 
   useEffect(() => {
     socket.emit("sync");
@@ -30,8 +38,6 @@ const App = () => {
     socket.on("queue", (playQueue) => setQueue(playQueue));
     socket.on("playerState", (state) => setPlayerState(state));
   }, []);
-
-  const emitUpdateQueue = (payload) => socket.emit("updateQueue", payload);
 
   return (
     <ThemeContext>
@@ -58,6 +64,8 @@ const App = () => {
                     socket={socket}
                     library={library}
                     emitUpdateQueue={emitUpdateQueue}
+                    expanded={expanded}
+                    handleToggle={handleToggle}
                   />
                 </Route>
                 <Route path="/queue">

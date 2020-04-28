@@ -2,12 +2,24 @@ const easyPeasy = require('easy-peasy');
 const { action, thunkOn } = easyPeasy;
 
 const socketModel = {
+  /**
+   * State
+   */
+
   io: null,
-  
+
+  /**
+   * Actions
+   */
+
   setSocket: action((state, payload) => {
     state.io = payload;
   }),
   
+  /**
+   * Listeners
+   */
+
   onPlay: thunkOn(
     (actions, storeActions) => [
       storeActions.player.play.successType,
@@ -38,11 +50,12 @@ const socketModel = {
             running: playerState.running,
             paused: playerState.paused
           });
+          io.emit('queue', helpers.getStoreState().queue);
           break;
         case playFailType:
           io.emit('message', {
-            message: `Failed to play: ${target.payload.name}`,
-            key: target.payload.path,
+            message: `Could not play`,
+            key: 'playFail',
             severity: 'error'
           });
           break;
@@ -74,7 +87,6 @@ const socketModel = {
             key: 'stopped',
             severity: 'success'
           });
-          console.log('running', playerState.omx.running);
           io.emit('playerState', {
             running: playerState.running,
             paused: playerState.paused
@@ -105,19 +117,17 @@ const socketModel = {
     (actions, storeActions) => [
       storeActions.queue.addItemAtEnd,
       storeActions.queue.addItemNext,
-      storeActions.queue.removeItem,
       storeActions.queue.removeAllItems
     ],
     (actions, target, helpers) => {
       const queue = helpers.getStoreState().queue;
       const io = helpers.getState().io;
-      
+
       io.emit('queue', helpers.getStoreState().queue)
       
       const [
         addItemAtEnd,
         addItemNext,
-        removeItem,
         removeAllItems
       ] = target.resolvedTargets;
 
@@ -133,13 +143,6 @@ const socketModel = {
           io.emit('message', {
             message: `Added next in queue: ${target.payload.name}`,
             key: target.payload.path,
-            severity: 'success'
-          });
-          break;
-        case removeItem:
-          io.emit('message', {
-            message: `Removed item ${target.payload} from queue`,
-            key: 'removeItem',
             severity: 'success'
           });
           break;
