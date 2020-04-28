@@ -63,14 +63,32 @@ const playerModel = {
   /**
    * Thunks
    */
+   
+  handlePlaybackEnd: thunk((actions, payload, { getState, getStoreState, getStoreActions }) => {
+    actions.updateRunning(false);
+    actions.updatePause(false);
+    getStoreState().socket.io.emit('playerState', {
+      running: getState().running,
+      paused: getState().paused
+    });
+    getStoreActions().queue.skipTrack(getStoreState().queue.activeIndex + 1);
+  }),
   
   play: thunk(async (actions, payload, helpers) => {
     const state = helpers.getState();
+    
+    // remove event listener from previous call to play()
+    state.omx.off('close', actions.handlePlaybackEnd);
+
     return new Promise((resolve, reject) => {
       actions.updatePause(false);
       if (payload) {
         state.omx.newSource(payload.path, 'local', false, state.volume);
         actions.updateRunning(true);
+        
+        // play next track on playback end
+        state.omx.on('close', actions.handlePlaybackEnd);
+        
         resolve();
       } else {
         actions.updateRunning(false);
@@ -86,25 +104,21 @@ const playerModel = {
   onTrackChange: thunkOn(
     (actions, storeActions) => [
       storeActions.queue.skipTrack.successType,
-      storeActions.queue.skipTrack.failType,
-      storeActions.queue.updateActiveIndexAndPlay
+      storeActions.queue.skipTrack.failType
     ],
-    (actions, target, { getStoreState }) => {
+    (actions, target, { getState, getStoreState }) => {
       const [
         skipTrackSuccess,
-        skipTrackFail,
-        updateActiveIndexAndPlay
+        skipTrackFail
       ] = target.resolvedTargets;
       
+      const state = getState();
+      
       switch (target.type) {
-        case updateActiveIndexAndPlay:
-          actions.play(getStoreState().queue.nowPlaying)
-          break;
         case skipTrackSuccess:
           actions.play(getStoreState().queue.nowPlaying);
           break;
         case skipTrackFail:
-          console.log(target);
           console.log('could not play that index', target.payload);
           break;
         default:
@@ -115,14 +129,14 @@ const playerModel = {
   
   onSetTrack: thunkOn(
     (actions, storeActions) => storeActions.queue.setTrack,
-    (actions, target, { getStoreState }) => {
+    (actions, target, { getState, getStoreState }) => {
       actions.play(getStoreState().queue.nowPlaying);
     }
   ),
   
   onAddItemNextAndPlay: thunkOn(
     (actions, storeActions) => storeActions.queue.addItemNextAndPlay,
-    (actions, target, { getStoreState }) => {
+    (actions, target, { getState, getStoreState }) => {
       actions.play(getStoreState().queue.nowPlaying);
     }
   )
