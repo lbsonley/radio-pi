@@ -15,6 +15,7 @@ const socket = io.connect("http://192.168.0.38:8080");
 const App = () => {
   const [library, setLibrary] = useState({});
   const [expanded, setExpanded] = useState(["Artists", "Music"]);
+  const [selected, setSelected] = useState("Music");
   const [queue, setQueue] = useState({
     items: [],
     activeIndex: 0,
@@ -28,6 +29,10 @@ const App = () => {
   const handleToggle = (e, nodeIds) => {
     console.log('nodeIds', nodeIds);
     setExpanded(nodeIds);
+  };
+  
+  const handleSelect = (e, nodeIds) => {
+    setSelected(nodeIds);
   };
   
   const emitUpdateQueue = (payload) => socket.emit("updateQueue", payload);
@@ -66,6 +71,8 @@ const App = () => {
                     emitUpdateQueue={emitUpdateQueue}
                     expanded={expanded}
                     handleToggle={handleToggle}
+                    selected={selected}
+                    handleSelect={handleSelect}
                   />
                 </Route>
                 <Route path="/queue">

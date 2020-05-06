@@ -42,3 +42,2533 @@ stop
 disconnected
 disconnected
 remote connected
+
+> pi.Tv@0.0.1 server /home/pi/projects/radio-pi
+> nodemon --watch server server/index.js
+
+[33m[nodemon] 2.0.3[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] watching path(s): server/**/*[39m
+[33m[nodemon] watching extensions: js,mjs,json[39m
+[32m[nodemon] starting `node server/index.js`[39m
+events.js:287
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: EBADF: bad file descriptor, read
+Emitted 'error' event on ReadStream instance at:
+    at internal/fs/streams.js:186:12
+    at FSReqCallback.wrapper [as oncomplete] (fs.js:488:5) {
+  errno: -9,
+  code: 'EBADF',
+  syscall: 'read'
+}
+npm ERR! code ELIFECYCLE
+npm ERR! errno 1
+npm ERR! pi.Tv@0.0.1 server: `nodemon --watch server server/index.js`
+npm ERR! Exit status 1
+npm ERR! 
+npm ERR! Failed at the pi.Tv@0.0.1 server script.
+npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /home/pi/.npm/_logs/2020-04-30T12_49_08_818Z-debug.log
+
+> pi.Tv@0.0.1 start /home/pi/projects/radio-pi
+> node server/index.js
+
+Thu, 30 Apr 2020 12:51:58 GMT body-parser deprecated bodyParser: use individual json/urlencoded middlewares at server/index.js:27:9
+Thu, 30 Apr 2020 12:51:58 GMT body-parser deprecated undefined extended: provide extended option at node_modules/body-parser/index.js:105:29
+Express server listening on port 8080
+remote connected
+remote connected
+GET / 200 288 - 34.672 ms
+disconnected
+GET /main.js 304 - - 4.656 ms
+remote connected
+args for omxplayer: [
+  '/home/pi/Music/Artists/Little_Feat/Sailin_Shoes/Cold_Cold_Cold.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -4800
+]
+remote connected
+disconnected
+disconnected
+args for omxplayer: [
+  '/home/pi/Music/Artists/Little_Feat/Sailin_Shoes/Tripe_Face_Boogie.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -900
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Little_Feat/Sailin_Shoes/Trouble.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -900
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Little_Feat/Feats_Dont_Fail_Me_Now/Spanish_Moon.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -900
+]
+Thu, 30 Apr 2020 13:01:16 GMT body-parser deprecated bodyParser: use individual json/urlencoded middlewares at server/index.js:27:9
+Thu, 30 Apr 2020 13:01:16 GMT body-parser deprecated undefined extended: provide extended option at node_modules/body-parser/index.js:105:29
+Express server listening on port 8080
+GET /library 304 - - 42.885 ms
+GET /main.js 304 - - 2.954 ms
+remote connected
+disconnected
+remote connected
+args for omxplayer: [
+  '/home/pi/Music/Artists/Collie_Buddz/Collie_Buddz_-_Come_Around.mp4',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -4800
+]
+disconnected
+GET /queue 200 288 - 20.171 ms
+GET /main.js 200 2502844 - 13.734 ms
+remote connected
+disconnected
+args for omxplayer: [
+  '/home/pi/Music/Artists/Dredd_Scott/Breakin_Combs/To_Da_Old_School_feat._Tragedy.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1200
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Fruition/Just_One_Of_Them_Nights/Portland_Bound.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1200
+]
+remote connected
+args for omxplayer: [
+  '/home/pi/Music/Artists/John_Butler/John_Butler-Ocean.mp4',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1200
+]
+disconnected
+remote connected
+disconnected
+remote connected
+args for omxplayer: [
+  '/home/pi/Music/Artists/John_Prine/Tree_Of_Forgiveness/When_I_Get_To_Heaven.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -600
+]
+disconnected
+args for omxplayer: [
+  '/home/pi/Music/Artists/Little_Feat/Sailin_Shoes/Tripe_Face_Boogie.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -900
+]
+remote connected
+disconnected
+args for omxplayer: [
+  '/home/pi/Music/Artists/More_Relation/More_Relation_-_The_Light.mp4',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1500
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Satsang/Satsang-We_Are_Free.mp4',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1500
+]
+remote connected
+disconnected
+args for omxplayer: [
+  '/home/pi/Music/Artists/Sturgill_Simpson/Metamodern_Sounds_In_Country_Music/Just_Let_Go.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1500
+]
+remote connected
+args for omxplayer: [
+  '/home/pi/Music/Artists/The_Movement/The_Movement_-_Smoke.mp4',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1500
+]
+disconnected
+args for omxplayer: [
+  '/home/pi/Music/Artists/Trevor_Hall/This_is_Blue/Trevor_Hall_-_Om_Shakti_Om.mp4',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1500
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Trevor_Hall/Chapter_of_the_Forest/Trevor_Hall_-_Green_Mountain_State.mp4',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1500
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Sublime/Cisco_Kid.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1500
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Sturgill_Simpson/Metamodern_Sounds_In_Country_Music/Turtles_All_the_Way_Down_Sturgill_Simpson.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1500
+]
+remote connected
+disconnected
+args for omxplayer: [
+  '/home/pi/Music/Artists/Sturgill_Simpson/Metamodern_Sounds_In_Country_Music/Voices.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1500
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Sturgill_Simpson/Metamodern_Sounds_In_Country_Music/Long_White_Line.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1500
+]
+remote connected
+args for omxplayer: [
+  '/home/pi/Music/Artists/Sturgill_Simpson/Metamodern_Sounds_In_Country_Music/Pan_Bowl_Bonus_Track.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1500
+]
+disconnected
+args for omxplayer: [
+  '/home/pi/Music/Artists/Sturgill_Simpson/Metamodern_Sounds_In_Country_Music/It_Ain_t_All_Flowers.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1500
+]
+remote connected
+disconnected
+args for omxplayer: [
+  '/home/pi/Music/Artists/Fruition/Just_One_Of_Them_Nights/Come_On_Get_In.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1500
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Fruition/Just_One_Of_Them_Nights/Boil_Over.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1500
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/ZZ-Top/Blue_Jean_Blues.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1500
+]
+remote connected
+remote connected
+disconnected
+disconnected
+remote connected
+args for omxplayer: [
+  '/home/pi/Music/Artists/ZZ-Top/Heard_It_On_The_X.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1500
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/ZZ-Top/Legs.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1500
+]
+could not play that index 23
+(node:5399) UnhandledPromiseRejectionWarning: undefined
+(node:5399) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 2)
+(node:5399) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+disconnected
+remote connected
+disconnected
+remote connected
+GET / 200 288 - 6.837 ms
+GET /main.js 304 - - 3.836 ms
+remote connected
+args for omxplayer: [
+  '/home/pi/Music/Artists/Sizzla/Sizzla_-_Bless_Up.mp4',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1500
+]
+remote connected
+disconnected
+GET / 200 288 - 4.532 ms
+GET /main.js 200 2502844 - 4.809 ms
+remote connected
+disconnected
+args for omxplayer: [
+  '/home/pi/Music/Artists/Allman_Brothers/A_Decade_of_Hits_1969_-_1979/The_Allman_Brothers_Band_-_Statesboro_Blues_Live.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1500
+]
+disconnected
+remote connected
+disconnected
+disconnected
+args for omxplayer: [
+  '/home/pi/Music/Artists/Allman_Brothers/A_Decade_of_Hits_1969_-_1979/Jessica.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1500
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Allman_Brothers/A_Decade_of_Hits_1969_-_1979/Midnight_Rider.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1500
+]
+remote connected
+args for omxplayer: [
+  '/home/pi/Music/Artists/Allman_Brothers/A_Decade_of_Hits_1969_-_1979/Southbound.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1500
+]
+remote connected
+disconnected
+remote connected
+could not play that index 28
+(node:5399) UnhandledPromiseRejectionWarning: undefined
+(node:5399) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 4)
+disconnected
+remote connected
+disconnected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+GET /remote 200 288 - 5.594 ms
+GET /main.js 200 2502844 - 4.119 ms
+remote connected
+disconnected
+GET / 200 288 - 7.142 ms
+GET /main.js 304 - - 3.486 ms
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+args for omxplayer: [
+  '/home/pi/Music/Artists/Collie_Buddz/Collie_Buddz_-_Come_Around.mp4',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1500
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Dredd_Scott/Breakin_Combs/To_Da_Old_School_feat._Tragedy.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1200
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Fruition/Just_One_Of_Them_Nights/Portland_Bound.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1200
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/John_Butler/John_Butler-Ocean.mp4',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1200
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/John_Prine/Tree_Of_Forgiveness/When_I_Get_To_Heaven.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1200
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Little_Feat/Sailin_Shoes/Tripe_Face_Boogie.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1200
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/More_Relation/More_Relation_-_The_Light.mp4',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1200
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Satsang/Satsang-We_Are_Free.mp4',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1200
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Sturgill_Simpson/Metamodern_Sounds_In_Country_Music/Just_Let_Go.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1200
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/The_Movement/The_Movement_-_Smoke.mp4',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1200
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Trevor_Hall/This_is_Blue/Trevor_Hall_-_Om_Shakti_Om.mp4',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1200
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Trevor_Hall/Chapter_of_the_Forest/Trevor_Hall_-_Green_Mountain_State.mp4',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1200
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Sublime/Cisco_Kid.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1200
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Sturgill_Simpson/Metamodern_Sounds_In_Country_Music/Turtles_All_the_Way_Down_Sturgill_Simpson.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1200
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Sturgill_Simpson/Metamodern_Sounds_In_Country_Music/Voices.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1200
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Sturgill_Simpson/Metamodern_Sounds_In_Country_Music/Long_White_Line.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1200
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Sturgill_Simpson/Metamodern_Sounds_In_Country_Music/Pan_Bowl_Bonus_Track.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1200
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Sturgill_Simpson/Metamodern_Sounds_In_Country_Music/It_Ain_t_All_Flowers.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1200
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Fruition/Just_One_Of_Them_Nights/Come_On_Get_In.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1200
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Fruition/Just_One_Of_Them_Nights/Boil_Over.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1200
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/ZZ-Top/Blue_Jean_Blues.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1200
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/ZZ-Top/Heard_It_On_The_X.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1200
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/ZZ-Top/Legs.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1200
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Sizzla/Sizzla_-_Bless_Up.mp4',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1200
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Allman_Brothers/A_Decade_of_Hits_1969_-_1979/The_Allman_Brothers_Band_-_Statesboro_Blues_Live.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1200
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Allman_Brothers/A_Decade_of_Hits_1969_-_1979/Jessica.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1200
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Allman_Brothers/A_Decade_of_Hits_1969_-_1979/Midnight_Rider.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1200
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Allman_Brothers/A_Decade_of_Hits_1969_-_1979/Southbound.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1200
+]
+GET /library 200 288 - 7.673 ms
+GET /main.js 304 - - 3.403 ms
+remote connected
+args for omxplayer: [
+  '/home/pi/Music/Artists/Samory_I/Samory_I_-_Rasta_Nuh_Gangsta.mp4',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1200
+]
+disconnected
+args for omxplayer: [
+  '/home/pi/Music/Artists/Sister_Nancy/Sister_Nancy_-_The_Handle.mp4',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1800
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Sizzla/Sizzla_-_Mash_Dem_Down.mp4',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1800
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Sizzla/Sizzla_-_Smoke_Marijuana.mp4',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1800
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Stephen_Marley/Stephen_Marley_Sizzla_Capleton_-_Rock_Stone.mp4',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1800
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Sublime/April_29_1992_Miami.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1800
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Sublime/Greatest-Hits.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1800
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Sublime/Let_s_Go_Get_Stoned.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1800
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Sublime/Seed.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1800
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Sublime/We_re_Only_Gonna_Die_For_Our_Arrogance.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1800
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Tan_Tan/Tan_Tan_-_Tantanlising.mp4',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1800
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Lutan_Fyah/Lutan_Fyah_-_Spliff_Tail.mp4',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1800
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Lutan_Fyah/Lutan_Fyah_-_When_Mi_Rise_It.mp4',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1800
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Bob_Marley/Kaya/Misty_Morning_1978_-_Bob_Marley_The_Wailers.mp4',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1800
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Bob_Marley/Survival/Africa_unite_-_Bob_Marley.mp4',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1800
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Bob_Marley/Survival/Ambush_in_the_night_-_Bob_Marley.mp4',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1800
+]
+remote connected
+disconnected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+GET /queue 200 288 - 9.204 ms
+disconnected
+GET /main.js 304 - - 2.725 ms
+remote connected
+args for omxplayer: [
+  '/home/pi/Music/Artists/Sturgill_Simpson/Metamodern_Sounds_In_Country_Music/Living_the_Dream.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1800
+]
+disconnected
+args for omxplayer: [
+  '/home/pi/Music/Artists/Sturgill_Simpson/Metamodern_Sounds_In_Country_Music/Long_White_Line.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -900
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Sturgill_Simpson/High_Top_Mountain/Life_Aint_Fair_and_the_World_Is_Mean.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -900
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Sturgill_Simpson/High_Top_Mountain/You_Can_Have_the_Crown.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -900
+]
+could not play that index 4
+(node:5399) UnhandledPromiseRejectionWarning: undefined
+(node:5399) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 6)
+remote connected
+remote connected
+disconnected
+disconnected
+remote connected
+args for omxplayer: [
+  '/home/pi/Music/Artists/Sturgill_Simpson/A_Sailors_Guide_To_Earth/Keep_It_Between_The_Lines.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -900
+]
+GET / 206 288 - 14.985 ms
+GET / 200 288 - 3.750 ms
+GET /main.js 200 2502844 - 11.062 ms
+remote connected
+disconnected
+args for omxplayer: [
+  '/home/pi/Music/Artists/Sturgill_Simpson/A_Sailors_Guide_To_Earth/Sea_Stories.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -600
+]
+disconnected
+args for omxplayer: [
+  '/home/pi/Music/Artists/Little_Feat/Sailin_Shoes/Cold_Cold_Cold.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -600
+]
+remote connected
+disconnected
+args for omxplayer: [
+  '/home/pi/Music/Artists/Little_Feat/Sailin_Shoes/Tripe_Face_Boogie.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -600
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Little_Feat/Feats_Dont_Fail_Me_Now/Rock_and_Roll_Doctor.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -600
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Little_Feat/Dixie_Chicken/Roll_Um_Easy.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -600
+]
+remote connected
+GET /queue 200 288 - 5.128 ms
+GET /main.js 304 - - 3.286 ms
+remote connected
+disconnected
+disconnected
+remote connected
+disconnected
+remote connected
+args for omxplayer: [
+  '/home/pi/Music/Artists/George_Thorogood/George_Thorogood_-_one_bourbon_one_scotch_one_beer.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -600
+]
+disconnected
+remote connected
+disconnected
+args for omxplayer: [
+  '/home/pi/Music/Artists/Fruition/Just_One_Of_Them_Nights/Mountain_Annie.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -600
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Little_Feat/Dixie_Chicken/Fat_Man_in_the_Bathtub.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -600
+]
+remote connected
+disconnected
+args for omxplayer: [
+  '/home/pi/Music/Artists/Little_Feat/Feats_Dont_Fail_Me_Now/Spanish_Moon.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -600
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Little_Feat/Dixie_Chicken/Fool_Yourself.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -600
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/ZZ-Top/Cheap_Sunglasses.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -600
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Mike_Love/The_Change_Im_Seeking/Mike_Love_-_Barbershop.mp4',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -600
+]
+remote connected
+disconnected
+remote connected
+remote connected
+disconnected
+disconnected
+remote connected
+disconnected
+args for omxplayer: [
+  '/home/pi/Music/Artists/Mike_Love/The_Change_Im_Seeking/Mike_Love_-_Permanent_Holiday.mp4',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -600
+]
+could not play that index 17
+(node:5399) UnhandledPromiseRejectionWarning: undefined
+(node:5399) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 8)
+GET / 200 288 - 4.866 ms
+GET /main.js 200 2502844 - 3.449 ms
+remote connected
+args for omxplayer: [
+  '/home/pi/Music/Artists/J_Boog/J_Boog_-_Let_s_Do_It_Again_Official_Video.mp4',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -600
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/John_Butler/John_Butler-Ocean.mp4',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -600
+]
+remote connected
+disconnected
+args for omxplayer: [
+  '/home/pi/Music/Artists/Perfect/Perfect-Handcart_Boy.mp4',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  0
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Samory_I/Samory_I_-_Rasta_Nuh_Gangsta.mp4',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1200
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Satsang/Satsang-I_Am.mp4',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1200
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Sister_Nancy/Sister_Nancy_-_BAM_BAM.mp4',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1200
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Allman_Brothers/A_Decade_of_Hits_1969_-_1979/Ain_t_Wastin_Time_No_More.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1200
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Allman_Brothers/A_Decade_of_Hits_1969_-_1979/Blue_Sky.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -600
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Allman_Brothers/A_Decade_of_Hits_1969_-_1979/The_Allman_Brothers_Band_-_Statesboro_Blues_Live.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -300
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Allman_Brothers/A_Decade_of_Hits_1969_-_1979/Southbound.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -300
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Capleton/Capleton_Method_Man_-_Wings_of_the_Morning.mp4',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -300
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Collie_Buddz/Collie_Buddz_-_Come_Around.mp4',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -300
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Expanders/Old_Time_Something_Come_Back_Again/01-The_Expanders_-_Conquering_Lion.mp4',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -300
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Expanders/Old_Time_Something_Come_Back_Again/11-The_Expanders_-_Iron_Sharpening_Iron.mp4',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -300
+]
+remote connected
+disconnected
+args for omxplayer: [
+  '/home/pi/Music/Artists/Expanders/Old_Time_Something_Come_Back_Again/13-The_Expanders_-_Tell_Them_Ja_Ja.mp4',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -300
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Josh_Heinrichs/Josh_Heinrichs_-_Rooftop_Session.mp4',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -300
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Expanders/Old_Time_Something_Come_Back_Again/02-The_Expanders_-_Fire_Is_The_Desire.mp4',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -300
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Expanders/Old_Time_Something_Come_Back_Again/05-The_Expanders_-_Jericho.mp4',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -300
+]
+remote connected
+could not play that index 35
+(node:5399) UnhandledPromiseRejectionWarning: undefined
+(node:5399) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 10)
+disconnected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+remote connected
+disconnected
+disconnected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+remote connected
+disconnected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+remote connected
+disconnected
+disconnected
+remote connected
+remote connected
+remote connected
+remote connected
+disconnected
+disconnected
+remote connected
+disconnected
+disconnected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+remote connected
+disconnected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+remote connected
+disconnected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+GET /queue 200 288 - 17.867 ms
+remote connected
+disconnected
+remote connected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+disconnected
+remote connected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+remote connected
+disconnected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+remote connected
+disconnected
+disconnected
+remote connected
+remote connected
+disconnected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+args for omxplayer: [
+  '/home/pi/Music/Artists/Sturgill_Simpson/Metamodern_Sounds_In_Country_Music/Long_White_Line.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -300
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Sturgill_Simpson/High_Top_Mountain/Life_Aint_Fair_and_the_World_Is_Mean.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -300
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Sturgill_Simpson/High_Top_Mountain/You_Can_Have_the_Crown.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -300
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Sturgill_Simpson/A_Sailors_Guide_To_Earth/Keep_It_Between_The_Lines.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -300
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Sturgill_Simpson/A_Sailors_Guide_To_Earth/Sea_Stories.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -300
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Little_Feat/Sailin_Shoes/Cold_Cold_Cold.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -300
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Little_Feat/Sailin_Shoes/Tripe_Face_Boogie.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -300
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Little_Feat/Feats_Dont_Fail_Me_Now/Rock_and_Roll_Doctor.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -300
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Little_Feat/Dixie_Chicken/Roll_Um_Easy.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -300
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/George_Thorogood/George_Thorogood_-_one_bourbon_one_scotch_one_beer.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -300
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Fruition/Just_One_Of_Them_Nights/Mountain_Annie.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -300
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Little_Feat/Dixie_Chicken/Fat_Man_in_the_Bathtub.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -300
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Little_Feat/Feats_Dont_Fail_Me_Now/Spanish_Moon.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -300
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Little_Feat/Dixie_Chicken/Fool_Yourself.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -300
+]
+remote connected
+disconnected
+args for omxplayer: [
+  '/home/pi/Music/Artists/ZZ-Top/Cheap_Sunglasses.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -300
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Mike_Love/The_Change_Im_Seeking/Mike_Love_-_Barbershop.mp4',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -300
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Mike_Love/The_Change_Im_Seeking/Mike_Love_-_Permanent_Holiday.mp4',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -300
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/J_Boog/J_Boog_-_Let_s_Do_It_Again_Official_Video.mp4',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -300
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/John_Butler/John_Butler-Ocean.mp4',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -300
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Perfect/Perfect-Handcart_Boy.mp4',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -300
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Samory_I/Samory_I_-_Rasta_Nuh_Gangsta.mp4',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -300
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Satsang/Satsang-I_Am.mp4',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -300
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Sister_Nancy/Sister_Nancy_-_BAM_BAM.mp4',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -300
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Allman_Brothers/A_Decade_of_Hits_1969_-_1979/Ain_t_Wastin_Time_No_More.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -300
+]
+remote connected
+disconnected
+args for omxplayer: [
+  '/home/pi/Music/Artists/Allman_Brothers/A_Decade_of_Hits_1969_-_1979/Blue_Sky.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -300
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Allman_Brothers/A_Decade_of_Hits_1969_-_1979/The_Allman_Brothers_Band_-_Statesboro_Blues_Live.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -300
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Allman_Brothers/A_Decade_of_Hits_1969_-_1979/Southbound.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -300
+]
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+remote connected
+disconnected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+remote connected
+disconnected
+disconnected
+remote connected
+remote connected
+disconnected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+remote connected
+disconnected
+disconnected
+remote connected
+remote connected
+disconnected
+remote connected
+disconnected
+disconnected
+remote connected
+disconnected
+remote connected
+remote connected
+disconnected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+GET /queue 304 - - 46.643 ms
+GET /main.js 304 - - 4.818 ms
+remote connected
+disconnected
+args for omxplayer: [
+  '/home/pi/Music/Artists/Slumberville/Drizzle.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -300
+]
+disconnected
+args for omxplayer: [
+  '/home/pi/Music/Artists/Capleton/Capleton_Method_Man_-_Wings_of_the_Morning.mp4',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -600
+]
+remote connected
+args for omxplayer: [
+  '/home/pi/Music/Artists/Slumberville/Slumberville_-_Asparagus.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -600
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Slumberville/Slumberville_-_Aconcagua.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -600
+]
+disconnected
+remote connected
+args for omxplayer: [
+  '/home/pi/Music/Artists/Slumberville/Slumberville_-_Artwork_in_Amsterdam.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -600
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Slumberville/Slumberville_-_Asparagus.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -600
+]
+remote connected
+disconnected
+args for omxplayer: [
+  '/home/pi/Music/Artists/Slumberville/Slumberville_-_Breeze.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1500
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Slumberville/Slumberville_-_Bye_Berlin.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1500
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Slumberville/Slumberville_-_Castles_in_air.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1500
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Slumberville/Slumberville_-_Cave_water.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1500
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Slumberville/Slumberville_-_Honolulu.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1500
+]
+remote connected
+args for omxplayer: [
+  '/home/pi/Music/Artists/Slumberville/Slumberville_-_Honolulu.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -1500
+]
+disconnected
+args for omxplayer: [
+  '/home/pi/Music/Artists/Slumberville/Slumberville_-_I_love_you.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -600
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Slumberville/Slumberville_-_Insomnia.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -600
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Slumberville/Slumberville_-_Jazzus.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -600
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Slumberville/Slumberville_-_Ladybug.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -600
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Slumberville/Slumberville_-_Landscape.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -600
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Slumberville/Slumberville_-_Late_night.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -600
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Slumberville/Slumberville_-_Life.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -600
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Slumberville/Slumberville_-_Memory_lane.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -600
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Slumberville/Slumberville_-_Morning.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -600
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Slumberville/Slumberville_-_On_the_beach.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -600
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Slumberville/Slumberville_-_Peach_Poetry.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -600
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Slumberville/Slumberville_-_Sunset.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -600
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Slumberville/Slumberville_-_Taranto.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -600
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Slumberville/Slumberville_-_The_Muses.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -600
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Slumberville/Slumberville_-_Tokyo.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -600
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Slumberville/Slumberville_-_Universe.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -600
+]
+could not play that index 60
+(node:5399) UnhandledPromiseRejectionWarning: undefined
+(node:5399) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 12)
+remote connected
+args for omxplayer: [
+  '/home/pi/Music/Artists/Sturgill_Simpson/High_Top_Mountain/You_Can_Have_the_Crown.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -600
+]
+disconnected
+args for omxplayer: [
+  '/home/pi/Music/Artists/Sturgill_Simpson/A_Sailors_Guide_To_Earth/Keep_It_Between_The_Lines.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -900
+]
+remote connected
+disconnected
+remote connected
+disconnected
+disconnected
+args for omxplayer: [
+  '/home/pi/Music/Artists/Sturgill_Simpson/A_Sailors_Guide_To_Earth/Sea_Stories.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -600
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Little_Feat/Sailin_Shoes/Cold_Cold_Cold.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -600
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Little_Feat/Sailin_Shoes/Tripe_Face_Boogie.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -600
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Little_Feat/Feats_Dont_Fail_Me_Now/Rock_and_Roll_Doctor.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -600
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Little_Feat/Dixie_Chicken/Roll_Um_Easy.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -600
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/George_Thorogood/George_Thorogood_-_one_bourbon_one_scotch_one_beer.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -600
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Fruition/Just_One_Of_Them_Nights/Mountain_Annie.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -600
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Little_Feat/Dixie_Chicken/Fat_Man_in_the_Bathtub.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -600
+]
+remote connected
+disconnected
+args for omxplayer: [
+  '/home/pi/Music/Artists/Little_Feat/Feats_Dont_Fail_Me_Now/Spanish_Moon.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -600
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Little_Feat/Dixie_Chicken/Fool_Yourself.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -600
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/ZZ-Top/Cheap_Sunglasses.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -600
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Mike_Love/The_Change_Im_Seeking/Mike_Love_-_Barbershop.mp4',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -600
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Mike_Love/The_Change_Im_Seeking/Mike_Love_-_Permanent_Holiday.mp4',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -600
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/J_Boog/J_Boog_-_Let_s_Do_It_Again_Official_Video.mp4',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -600
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/John_Butler/John_Butler-Ocean.mp4',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -600
+]
+remote connected
+disconnected
+args for omxplayer: [
+  '/home/pi/Music/Artists/Perfect/Perfect-Handcart_Boy.mp4',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -600
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Samory_I/Samory_I_-_Rasta_Nuh_Gangsta.mp4',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -600
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Satsang/Satsang-I_Am.mp4',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -600
+]
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+remote connected
+disconnected
+GET /queue 304 - - 5.021 ms
+GET /main.js 304 - - 3.052 ms
+remote connected
+args for omxplayer: [
+  '/home/pi/Music/Artists/Capleton/Capleton_Method_Man_-_Wings_of_the_Morning.mp4',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -600
+]
+disconnected
+args for omxplayer: [
+  '/home/pi/Music/Artists/Collie_Buddz/Collie_Buddz_-_Come_Around.mp4',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -300
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Expanders/Old_Time_Something_Come_Back_Again/01-The_Expanders_-_Conquering_Lion.mp4',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -300
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Expanders/Old_Time_Something_Come_Back_Again/11-The_Expanders_-_Iron_Sharpening_Iron.mp4',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -300
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Expanders/Old_Time_Something_Come_Back_Again/13-The_Expanders_-_Tell_Them_Ja_Ja.mp4',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -300
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Josh_Heinrichs/Josh_Heinrichs_-_Rooftop_Session.mp4',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -300
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Expanders/Old_Time_Something_Come_Back_Again/02-The_Expanders_-_Fire_Is_The_Desire.mp4',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -300
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Expanders/Old_Time_Something_Come_Back_Again/05-The_Expanders_-_Jericho.mp4',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -300
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Slumberville/Slumberville_-_Aconcagua.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -300
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Slumberville/Slumberville_-_Artwork_in_Amsterdam.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -300
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Slumberville/Slumberville_-_Asparagus.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -300
+]
+remote connected
+args for omxplayer: [
+  '/home/pi/Music/Artists/Slumberville/Slumberville_-_Honolulu.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  -300
+]
+disconnected
+args for omxplayer: [
+  '/home/pi/Music/Artists/Slumberville/Slumberville_-_I_love_you.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  0
+]
+args for omxplayer: [
+  '/home/pi/Music/Artists/Slumberville/Slumberville_-_Insomnia.mp3',
+  '-o',
+  'local',
+  '--blank',
+  '--no-osd',
+  '--vol',
+  0
+]
